@@ -3,6 +3,8 @@ import { Link, Route, Switch, BrowserRouter as Router } from 'react-router-dom'
 import {MdCardTravel} from 'react-icons/md' //Ovde ubacujemo ikonicu iz react-icons biblioteke
 import {HiMenu} from 'react-icons/hi'
 import {AiOutlineClose} from 'react-icons/ai'
+import { Button } from './Button'
+import './Navbar.css';
 
 function Navbar() {
     const [click, setClick] = useState(false); //state za klik na meni, da li da prikaze
@@ -10,6 +12,20 @@ function Navbar() {
     const handleClick = () => setClick(!click);   
 
     const closeMobileMenu = () => setClick(false);
+
+    const [button, setButton] = useState(false);
+
+    const showButton = () => {
+        if(window.innerWidth <= 960){
+            setButton(false);
+        }
+        else 
+        {
+            setButton(true);
+        }
+    }
+
+    window.addEventListener('resize', showButton);
 
     return (
         <div>
@@ -19,7 +35,7 @@ function Navbar() {
                         TRVL <MdCardTravel />
                     </Link>
                     <div className='menu-icon' onClick={handleClick}>
-                        { click ? <HiMenu /> : <AiOutlineClose />}
+                        { click ? <AiOutlineClose />: <HiMenu />}
                     </div>
                     <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                         <li className='nav-item'>
@@ -43,6 +59,7 @@ function Navbar() {
                             </Link>
                         </li>
                     </ul>
+                    {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
                 </div>
             </nav>
         </div>
