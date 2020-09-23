@@ -35,7 +35,7 @@ function Navbar() {
                         TRVL <MdCardTravel />
                     </Link>
                     <div className='menu-icon' onClick={handleClick}>
-                        { click ? <AiOutlineClose />: <HiMenu />}
+                        { click ? <AiOutlineClose /> : <HiMenu />}
                     </div>
                     <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                         <li className='nav-item'>
@@ -55,7 +55,7 @@ function Navbar() {
                         </li>
                         <li className='nav-item'>
                             <Link to='/sign-up' className='nav-links-mobile' onClick={closeMobileMenu}>
-                                Sign Up
+                                Sign Up 
                             </Link>
                         </li>
                     </ul>
